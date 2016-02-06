@@ -5,6 +5,8 @@ virtual-loading-dots [![npm version](https://badge.fury.io/js/virtual-loading-do
 
 Currently usable. API is a work in progress and will change
 
+[View live demo](http://chinedufn.github.io/virtual-loading-dots)
+
 ## To Install
 
 ```
