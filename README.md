@@ -25,7 +25,7 @@ View the component in a browser using `npm run demo`
 
 ## API
 
-#### `LoadingDots(dotColor, widthEM, parentBackgroundColor, borderRadius)` -> `string`
+#### `LoadingDots(dotColor, widthEM, parentBackgroundColor, borderRadius)` -> `object`
 
 ##### dotColor
 
@@ -63,6 +63,10 @@ Type: `string`
 
 `0%` for squares, `50%` for circles, anything in between for a hybrid shape
 
+##### Returned Value
+
+Returns an object that exposes a `.render` function
+
 ## TODO:
 
 - Accomplish animation without needing to know a background color (i.e. the dots are transparent)
@@ -70,6 +74,7 @@ Type: `string`
 - Defaults for dotColor, width, and borderRadius
 - potentially allow consumer to specify units (`em`, `px`, etc)
 - Allow dots to interpolate between two colors
+- Add a few different `loadingDots` to demo
 
 ## See Also
 
