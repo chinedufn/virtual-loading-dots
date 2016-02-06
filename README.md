@@ -29,7 +29,7 @@ View the component in a browser using `npm run demo`
 
 ##### dotColor
 
-**Required**
+*Required*
 
 Type: `string`
 
@@ -37,7 +37,7 @@ The color of your dots
 
 ##### widthEM
 
-**Required**
+*Required*
 
 `Type`: number
 
@@ -45,7 +45,7 @@ Width of your entire loading dots component in `em`
 
 ##### parentBackgroundColor
 
-**Required**
+*Required*
 
 Type: `string`
 
@@ -57,7 +57,7 @@ Ideally the loading spinner would be transparent. Need to figure out a better an
 
 ##### borderRadius
 
-**Required**
+*Required*
 
 Type: `string`
 
