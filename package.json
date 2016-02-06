@@ -1,0 +1,49 @@
+{
+  "name": "virtual-loading-dots",
+  "version": "0.0.1",
+  "description": "Virtual-dom loading dots component",
+  "main": "src/virtual-loading-dots.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "demo": "budo demo/browser.js --open --live",
+    "deploy": "mkdirp example-dist && browserify demo/browser.js | htmlify > example-dist/index.html && gh-pages -d example-dist",
+    "test": "standard && node test/virtual-loading-dots.js && browserify test/virtual-loading-dots.js | testron"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chinedufn/virtual-loading-dots.git"
+  },
+  "keywords": [
+    "load",
+    "loading",
+    "spinner",
+    "dots",
+    "virtual-dom",
+    "vdom"
+  ],
+  "author": "Chinedu Francis Nwafili <frankie.nwafili@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chinedufn/virtual-loading-dots/issues"
+  },
+  "homepage": "https://github.com/chinedufn/virtual-loading-dots#readme",
+  "dependencies": {
+    "create-keyframe": "^1.0.1",
+    "extend": "^3.0.0",
+    "insert-css": "^0.2.0"
+  },
+  "devDependencies": {
+    "budo": "^8.0.4",
+    "electron-prebuilt": "^0.36.7",
+    "gh-pages": "^0.9.0",
+    "inline-htmlify": "^2.0.0",
+    "mkdirp": "^0.5.1",
+    "raf-loop": "^1.1.3",
+    "standard": "^6.0.1",
+    "tape": "^4.4.0",
+    "testron": "^1.2.0",
+    "virtual-dom": "^2.1.1"
+  }
+}
