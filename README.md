@@ -90,8 +90,7 @@ The [animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation
 
 ## TODO:
 
-- Document options
-- Allow dots to interpolate between two colors
+- Add animation override example
 - Add a few different `loadingDots` usage examples
 - Add documentation to stress importance of framework agnostic components
 - Research React and update the  React example
