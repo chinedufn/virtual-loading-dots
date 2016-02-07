@@ -52,7 +52,7 @@ Pass in any options that you would like to override
 
 Type: `string`
 
-Default: see [insert-animation file](src/insert-animation.js)
+Default: see the return value of [insert-animation](src/insert-animation.js#L33)
 
 The animation for your dots
 
@@ -70,7 +70,7 @@ Type: `string`
 
 Default: 'black'
 
-The color of your dots
+The color of your dots in [css color notation](https://developer.mozilla.org/en-US/docs/Web/CSS/color)
 
 ##### count
 

@@ -1,6 +1,6 @@
 var extend = require('xtend')
 
-var defaultAnimationName = require('./insert-animation.js')()
+var defaultAnimation = require('./insert-animation.js')()
 
 module.exports = {
   render: RenderLoadingDots
@@ -18,7 +18,7 @@ var transparentDotContainerStyle = {
 }
 
 var defaults = {
-  animation: defaultAnimationName + ' 1.8s ease-in-out infinite both',
+  animation: defaultAnimation,
   borderRadius: 50,
   color: 'black',
   count: 3,

@@ -3,8 +3,9 @@ var insertCSS = require('insert-css')
 
 module.exports = InsertAnimation
 
-// TODO: Accomplish this animation without needing
-// parents background color
+// We insert our animation into the DOM, and return
+// an animation property value
+// This will only happen once in your consumer application
 function InsertAnimation () {
   var KFObj = createKF({
     0: {
@@ -29,5 +30,5 @@ function InsertAnimation () {
     insertCSS(KFObj.css)
   }
 
-  return name
+  return name + ' 1.8s ease-in-out infinite both'
 }
