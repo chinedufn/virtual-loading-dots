@@ -16,9 +16,7 @@ var CreateLoadSpinner = require('../')
 var dotColor = 'blue'
 var borderRadius = '0'
 
-var loadSpinner = CreateLoadSpinner()
-
-var oldLoadSpinnerVtree = loadSpinner.render(h, dotColor, borderRadius)
+var oldLoadSpinnerVtree = CreateLoadSpinner.render(h, dotColor, borderRadius)
 
 // Put your load spinner inside a parent div
 // It will size itself appropriately
@@ -62,8 +60,7 @@ var CreateLoadSpinner = require('../')
 var dotColor = 'red'
 var borderRadius = '50%'
 
-var loadSpinner = CreateLoadSpinner()
-var rootNode = loadSpinner.render(React.createElement, dotColor, borderRadius)
+var rootNode = CreateLoadSpinner.render(React.createElement, dotColor, borderRadius)
 var divToMount = document.createElement('div')
 
 ReactDOM.render(React.createElement('div', {}, [
@@ -20120,16 +20117,11 @@ function InsertAnimation () {
 }).call(this,require('_process'))
 },{"_process":41,"create-keyframe":6,"insert-css":39}],192:[function(require,module,exports){
 var extend = require('xtend')
-var insertAnimation = require('./insert-animation.js')
 
-module.exports = CreateLoadingDots
+var animationName = require('./insert-animation.js')()
 
-function CreateLoadingDots () {
-  var animationName = insertAnimation()
-
-  return {
-    render: RenderLoadingDots.bind(null, animationName)
-  }
+module.exports = {
+  render: RenderLoadingDots
 }
 
 // Pull this out. Make a function that returns the style
@@ -20143,7 +20135,7 @@ var baseDotStyle = {
   flex: '0 0 auto'
 }
 
-function RenderLoadingDots (animationName, h, dotColor, borderRadius) {
+function RenderLoadingDots (h, dotColor, borderRadius) {
   var baseStyle = {
     animation: animationName + ' 1.8s ease-in-out infinite both',
     borderRadius: borderRadius,
