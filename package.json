@@ -1,6 +1,6 @@
 {
   "name": "virtual-loading-dots",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Virtual-dom loading dots component",
   "main": "src/virtual-loading-dots.js",
   "directories": {
