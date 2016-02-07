@@ -3,8 +3,6 @@ virtual-loading-dots [![npm version](https://badge.fury.io/js/virtual-loading-do
 
 > virtual-dom loading dots component
 
-Currently usable. API is a work in progress and will change
-
 [View live demo](http://chinedufn.github.io/virtual-loading-dots)
 
 ## To Install
@@ -13,15 +11,23 @@ Currently usable. API is a work in progress and will change
 $ npm install --save virtual-loading-dots
 ```
 
+Component is currently usable, but the API is a work in progress and will change
+
 ## Usage
+
+`virtual-loading-dots` works with [virtual-dom](https://github.com/Matt-Esch/virtual-dom),
+[react](https://npmjs.com/package/react), or any other DOM builder with a `hyperscript` style
+API: `h(tagName, properties, children)`
 
 ```js
 // TODO: Example usage
 ```
+For now use the [demo](/demo) folder for example usage
 
-For now use the [demo](/demo) folder as an example
-
-View the component in a browser using `npm run demo`
+```sh
+# view the demo in a local browser by pasting this into your terminal:
+git clone https://github.com/chinedufn/virtual-loading-dots && cd virtual-loading-dots && npm install && npm run demo
+```
 
 ## API
 
@@ -49,12 +55,11 @@ Returns an object that exposes a `.render` function
 
 ## TODO:
 
-- Accomplish animation without needing to know a background color (i.e. the dots are transparent)
-- Accomplish animation without needing to know a width (i.e. using percentages)
-- Defaults for dotColor, width, and borderRadius
-- potentially allow consumer to specify units (`em`, `px`, etc)
+- Defaults for dotColor and borderRadius
 - Allow dots to interpolate between two colors
 - Add a few different `loadingDots` to demo
+- Add documentation to stress importance of framework agnostic components
+- Research React and update the  React example
 
 ## See Also
 

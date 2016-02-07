@@ -5,8 +5,8 @@ var CreateLoadSpinner = require('../')
 var dotColor = 'red'
 var borderRadius = '50%'
 
-var loadSpinner = CreateLoadSpinner(dotColor, borderRadius)
-var rootNode = loadSpinner.render(React.createElement)
+var loadSpinner = CreateLoadSpinner()
+var rootNode = loadSpinner.render(React.createElement, dotColor, borderRadius)
 var divToMount = document.createElement('div')
 
 ReactDOM.render(React.createElement('div', {}, [

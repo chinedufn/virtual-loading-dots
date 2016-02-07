@@ -5,9 +5,9 @@ var CreateLoadSpinner = require('../')
 var dotColor = 'blue'
 var borderRadius = '0'
 
-var loadSpinner = CreateLoadSpinner(dotColor, borderRadius)
+var loadSpinner = CreateLoadSpinner()
 
-var oldLoadSpinnerVtree = loadSpinner.render(h)
+var oldLoadSpinnerVtree = loadSpinner.render(h, dotColor, borderRadius)
 
 // Put your load spinner inside a parent div
 // It will size itself appropriately
