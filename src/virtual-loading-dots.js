@@ -1,6 +1,6 @@
 var extend = require('xtend')
 
-var defaultAnimation = require('./insert-animation.js')()
+var defaultAnimation = require('./default-animation.js')
 
 module.exports = {
   render: RenderLoadingDots
