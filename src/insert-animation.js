@@ -5,23 +5,23 @@ module.exports = InsertAnimation
 
 // TODO: Accomplish this animation without needing
 // parents background color
-function InsertAnimation (width, parentBackgroundColor) {
-  var dotDiameter = width / 3
-  // Slightly bigger than the radius
-  var spreadRadius = 'calc(.6 * ' + dotDiameter + 'em)'
-
+function InsertAnimation (width) {
   var KFObj = createKF({
     0: {
-      'box-shadow': 'inset 0 0 0 0 ' + parentBackgroundColor
+      height: '0%',
+      width: '0%'
     },
     40: {
-      'box-shadow': 'inset 0 0 0 ' + spreadRadius + ' ' + parentBackgroundColor
+      height: '100%',
+      width: '100%'
     },
-    70: {
-      'box-shadow': 'inset 0 0 0 ' + spreadRadius + ' ' + parentBackgroundColor
+    80: {
+      height: '0%',
+      width: '0%'
     },
     100: {
-      'box-shadow': 'inset 0 0 0 0 ' + parentBackgroundColor
+      height: '0%',
+      width: '0%'
     }
   })
   var name = KFObj.name
