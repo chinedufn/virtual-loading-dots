@@ -16,10 +16,12 @@
     "url": "git+https://github.com/chinedufn/virtual-loading-dots.git"
   },
   "keywords": [
+    "component",
     "load",
     "loading",
     "spinner",
     "dots",
+    "react",
     "virtual-dom",
     "vdom"
   ],
