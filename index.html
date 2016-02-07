@@ -20077,43 +20077,36 @@ function extend() {
 var createKF = require('create-keyframe')
 var insertCSS = require('insert-css')
 
-module.exports = InsertAnimation
-
-// We insert our animation into the DOM, and return
-// an animation property value
-// This will only happen once in your consumer application
-function InsertAnimation () {
-  var KFObj = createKF({
-    0: {
-      height: '0%',
-      width: '0%'
-    },
-    40: {
-      height: '100%',
-      width: '100%'
-    },
-    80: {
-      height: '0%',
-      width: '0%'
-    },
-    100: {
-      height: '0%',
-      width: '0%'
-    }
-  })
-  var name = KFObj.name
-  if (process.browser) {
-    insertCSS(KFObj.css)
+var KFObj = createKF({
+  0: {
+    height: '0%',
+    width: '0%'
+  },
+  40: {
+    height: '100%',
+    width: '100%'
+  },
+  80: {
+    height: '0%',
+    width: '0%'
+  },
+  100: {
+    height: '0%',
+    width: '0%'
   }
+})
 
-  return name + ' 1.8s ease-in-out infinite both'
-}
+if (process.browser) insertCSS(KFObj.css)
+
+var animation = KFObj.name + ' 1.8s ease-in-out infinite both'
+
+module.exports = animation
 
 }).call(this,require('_process'))
 },{"_process":41,"create-keyframe":6,"insert-css":39}],192:[function(require,module,exports){
 var extend = require('xtend')
 
-var defaultAnimation = require('./insert-animation.js')()
+var defaultAnimation = require('./default-animation.js')
 
 module.exports = {
   render: RenderLoadingDots
@@ -20174,7 +20167,7 @@ function RenderLoadingDots (h, opts) {
   return renderedLoadSpinner
 }
 
-},{"./insert-animation.js":191,"xtend":190}]},{},[1]);
+},{"./default-animation.js":191,"xtend":190}]},{},[1]);
 </script>
   </body>
 </html>
