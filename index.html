@@ -14,19 +14,29 @@ var createElement = require('virtual-dom/create-element')
 var CreateLoadSpinner = require('../')
 
 var dotColor = 'blue'
-var backgroundColor = 'white'
-var widthInEm = '18'
 var borderRadius = '0'
 
-var loadSpinner = CreateLoadSpinner(dotColor, widthInEm, backgroundColor, borderRadius)
+var loadSpinner = CreateLoadSpinner(dotColor, borderRadius)
 
 var oldLoadSpinnerVtree = loadSpinner.render(h)
-var loadSpinnerElement = createElement(h('div', [
-  'Pure virtual-dom example',
+
+// Put your load spinner inside a parent div
+// It will size itself appropriately
+var loadSpinnerInsideParentDiv = h('div#parentContainer', {
+  style: {
+    height: '6em',
+    width: '18em'
+  }
+}, [
   oldLoadSpinnerVtree
+])
+
+var standaloneExample = createElement(h('div', [
+  'Pure virtual-dom example',
+  loadSpinnerInsideParentDiv
 ]))
 
-document.body.appendChild(loadSpinnerElement)
+document.body.appendChild(standaloneExample)
 
 /*
 // We don't actually need a raf loop here since our component
@@ -50,17 +60,22 @@ var ReactDOM = require('react-dom')
 var CreateLoadSpinner = require('../')
 
 var dotColor = 'red'
-var backgroundColor = 'white'
-var widthInEm = '12'
 var borderRadius = '50%'
 
-var loadSpinner = CreateLoadSpinner(dotColor, widthInEm, backgroundColor, borderRadius)
+var loadSpinner = CreateLoadSpinner(dotColor, borderRadius)
 var rootNode = loadSpinner.render(React.createElement)
 var divToMount = document.createElement('div')
 
 ReactDOM.render(React.createElement('div', {}, [
   'React example',
-  rootNode
+  React.createElement('div', {
+    style: {
+      height: '6em',
+      width: '18em'
+    }
+  }, [
+    rootNode
+  ])
 ]), document.body.appendChild(divToMount))
 
 },{"../":192,"react":171,"react-dom":42}],4:[function(require,module,exports){
@@ -20075,7 +20090,7 @@ module.exports = InsertAnimation
 
 // TODO: Accomplish this animation without needing
 // parents background color
-function InsertAnimation (width) {
+function InsertAnimation () {
   var KFObj = createKF({
     0: {
       height: '0%',
@@ -20114,17 +20129,16 @@ var unitsString = 'em'
 
 module.exports = CreateLoadingDots
 
-function CreateLoadingDots (dotColor, widthInEm, backgroundColor, borderRadius) {
-  var animationName = insertAnimation(widthInEm, backgroundColor)
+function CreateLoadingDots (dotColor, borderRadius) {
+  var animationName = insertAnimation()
 
   // Pull this out. Make a function that returns the style
   var baseDotStyle = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-around',
-    width: (widthInEm / 3) + unitsString,
-    height: (widthInEm / 3) + unitsString,
-    borderRadius: borderRadius,
+    width: '33.33%',
+    height: '100%',
     flex: '0 0 auto'
   }
 
@@ -20133,24 +20147,21 @@ function CreateLoadingDots (dotColor, widthInEm, backgroundColor, borderRadius) 
   // So we're only returning a render function with our immutable data curried
   //
   // One option is to have an update or patch function to update the animation
-  // (query DOM and overwrite style tag) whenever we get a new width or backgroundColor
-  // Which should really only happen when the screen resizes.. but could get messy if
-  // the parent component is changing colors every frame
+  // (query DOM and overwrite style tag) whenever we get a new width
+  // Which should really only happen when the screen resizes..
 
   return {
     // This feels really weird.. but maybe it should feel weird to abstract around more performant CSS animations
     // Keeps thinking this through ...
-    render: RenderLoadingDots.bind(null, animationName, borderRadius, widthInEm, baseDotStyle)
+    render: RenderLoadingDots.bind(null, animationName, borderRadius, dotColor, baseDotStyle)
   }
 }
 
-function RenderLoadingDots (animationName, borderRadius, widthInEm, baseDotStyle, h) {
+function RenderLoadingDots (animationName, borderRadius, dotColor, baseDotStyle, h) {
   var baseStyle = {
     animation: animationName + ' 1.8s ease-in-out infinite both',
     borderRadius: borderRadius,
-    backgroundColor: 'red',
-    width: '10%',
-    height: '10%'
+    backgroundColor: dotColor
   }
   var loadingDots = []
   // Maybe allow the consumer to specify # divs?
@@ -20170,7 +20181,8 @@ function RenderLoadingDots (animationName, borderRadius, widthInEm, baseDotStyle
   var renderedLoadSpinner = h('div', {
     style: {
       display: 'flex',
-      width: widthInEm + unitsString
+      height: '100%',
+      width: '100%'
     }
   }, loadingDots)
 
