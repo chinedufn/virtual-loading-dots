@@ -8,17 +8,16 @@ var unitsString = 'em'
 
 module.exports = CreateLoadingDots
 
-function CreateLoadingDots (dotColor, widthInEm, borderRadius) {
-  var animationName = insertAnimation(widthInEm)
+function CreateLoadingDots (dotColor, borderRadius) {
+  var animationName = insertAnimation()
 
   // Pull this out. Make a function that returns the style
   var baseDotStyle = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-around',
-    width: (widthInEm / 3) + unitsString,
-    height: (widthInEm / 3) + unitsString,
-    borderRadius: borderRadius,
+    width: '33.33%',
+    height: '100%',
     flex: '0 0 auto'
   }
 
@@ -33,17 +32,15 @@ function CreateLoadingDots (dotColor, widthInEm, borderRadius) {
   return {
     // This feels really weird.. but maybe it should feel weird to abstract around more performant CSS animations
     // Keeps thinking this through ...
-    render: RenderLoadingDots.bind(null, animationName, borderRadius, widthInEm, baseDotStyle)
+    render: RenderLoadingDots.bind(null, animationName, borderRadius, dotColor, baseDotStyle)
   }
 }
 
-function RenderLoadingDots (animationName, borderRadius, widthInEm, baseDotStyle, h) {
+function RenderLoadingDots (animationName, borderRadius, dotColor, baseDotStyle, h) {
   var baseStyle = {
     animation: animationName + ' 1.8s ease-in-out infinite both',
     borderRadius: borderRadius,
-    backgroundColor: 'red',
-    width: '10%',
-    height: '10%'
+    backgroundColor: dotColor
   }
   var loadingDots = []
   // Maybe allow the consumer to specify # divs?
@@ -63,7 +60,8 @@ function RenderLoadingDots (animationName, borderRadius, widthInEm, baseDotStyle
   var renderedLoadSpinner = h('div', {
     style: {
       display: 'flex',
-      width: widthInEm + unitsString
+      height: '100%',
+      width: '100%'
     }
   }, loadingDots)
 

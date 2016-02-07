@@ -5,7 +5,7 @@ module.exports = InsertAnimation
 
 // TODO: Accomplish this animation without needing
 // parents background color
-function InsertAnimation (width) {
+function InsertAnimation () {
   var KFObj = createKF({
     0: {
       height: '0%',
