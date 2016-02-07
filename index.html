@@ -20079,8 +20079,9 @@ var insertCSS = require('insert-css')
 
 module.exports = InsertAnimation
 
-// TODO: Accomplish this animation without needing
-// parents background color
+// We insert our animation into the DOM, and return
+// an animation property value
+// This will only happen once in your consumer application
 function InsertAnimation () {
   var KFObj = createKF({
     0: {
@@ -20105,14 +20106,14 @@ function InsertAnimation () {
     insertCSS(KFObj.css)
   }
 
-  return name
+  return name + ' 1.8s ease-in-out infinite both'
 }
 
 }).call(this,require('_process'))
 },{"_process":41,"create-keyframe":6,"insert-css":39}],192:[function(require,module,exports){
 var extend = require('xtend')
 
-var defaultAnimationName = require('./insert-animation.js')()
+var defaultAnimation = require('./insert-animation.js')()
 
 module.exports = {
   render: RenderLoadingDots
@@ -20130,7 +20131,7 @@ var transparentDotContainerStyle = {
 }
 
 var defaults = {
-  animation: defaultAnimationName + ' 1.8s ease-in-out infinite both',
+  animation: defaultAnimation,
   borderRadius: 50,
   color: 'black',
   count: 3,
