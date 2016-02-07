@@ -8,8 +8,8 @@ var unitsString = 'em'
 
 module.exports = CreateLoadingDots
 
-function CreateLoadingDots (dotColor, widthInEm, backgroundColor, borderRadius) {
-  var animationName = insertAnimation(widthInEm, backgroundColor)
+function CreateLoadingDots (dotColor, widthInEm, borderRadius) {
+  var animationName = insertAnimation(widthInEm)
 
   // Pull this out. Make a function that returns the style
   var baseDotStyle = {
@@ -27,9 +27,8 @@ function CreateLoadingDots (dotColor, widthInEm, backgroundColor, borderRadius) 
   // So we're only returning a render function with our immutable data curried
   //
   // One option is to have an update or patch function to update the animation
-  // (query DOM and overwrite style tag) whenever we get a new width or backgroundColor
-  // Which should really only happen when the screen resizes.. but could get messy if
-  // the parent component is changing colors every frame
+  // (query DOM and overwrite style tag) whenever we get a new width
+  // Which should really only happen when the screen resizes..
 
   return {
     // This feels really weird.. but maybe it should feel weird to abstract around more performant CSS animations

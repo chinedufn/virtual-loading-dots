@@ -3,19 +3,28 @@ var createElement = require('virtual-dom/create-element')
 var CreateLoadSpinner = require('../')
 
 var dotColor = 'blue'
-var backgroundColor = 'white'
 var widthInEm = '18'
 var borderRadius = '0'
 
-var loadSpinner = CreateLoadSpinner(dotColor, widthInEm, backgroundColor, borderRadius)
+var loadSpinner = CreateLoadSpinner(dotColor, widthInEm, borderRadius)
 
 var oldLoadSpinnerVtree = loadSpinner.render(h)
-var loadSpinnerElement = createElement(h('div', [
-  'Pure virtual-dom example',
+
+// Put your load spinner inside a parent div
+// It will size itself appropriately
+var loadSpinnerInsideParentDiv = h('div#parentContainer', {
+}, [
   oldLoadSpinnerVtree
+])
+
+var standaloneExample = createElement(h('div', {
+
+}, [
+  'Pure virtual-dom example',
+  loadSpinnerInsideParentDiv
 ]))
 
-document.body.appendChild(loadSpinnerElement)
+document.body.appendChild(standaloneExample)
 
 /*
 // We don't actually need a raf loop here since our component
