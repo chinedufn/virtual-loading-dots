@@ -31,34 +31,71 @@ git clone https://github.com/chinedufn/virtual-loading-dots && cd virtual-loadin
 
 ## API
 
-#### `LoadingDots(dotColor, borderRadius)` -> `object`
+### `LoadingDots.render(h[, opts])` -> `vtree`
 
-##### dotColor
+#### h
 
-*Required*
+Your `hyperscript` style DOM builder.
+
+```js
+// standalone virtual-dom example
+var h = require('virtual-dom/h')
+// React example
+h = require('react').h
+```
+
+#### Options
+
+Pass in any options that you would like to override
+
+##### animation
 
 Type: `string`
 
-The color of your dots
+Default: see [insert-animation file](src/insert-animation.js)
+
+The animation for your dots
 
 ##### borderRadius
 
-*Required*
+Type: `number` or `string`
+
+Default: 50
+
+`0` for squares, `50` for circles, anything in between for a hybrid shape
+
+##### color
 
 Type: `string`
 
-`0%` for squares, `50%` for circles, anything in between for a hybrid shape
+Default: 'black'
 
-##### Returned Value
+The color of your dots
 
-Returns an object that exposes a `.render` function
+##### count
+
+Type: `number`
+
+Default: 3
+
+The number of dots
+
+##### delay
+
+Type: `number`
+
+Default: .16
+
+The [animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay) between each neighboring dot
 
 ## TODO:
 
+- Document options
 - Allow dots to interpolate between two colors
-- Add a few different `loadingDots` to demo
+- Add a few different `loadingDots` usage examples
 - Add documentation to stress importance of framework agnostic components
 - Research React and update the  React example
+- Maybe add .jsx and hyperx examples
 
 ## See Also
 

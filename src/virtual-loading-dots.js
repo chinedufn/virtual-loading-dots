@@ -1,6 +1,6 @@
 var extend = require('xtend')
 
-var animationName = require('./insert-animation.js')()
+var defaultAnimationName = require('./insert-animation.js')()
 
 module.exports = {
   render: RenderLoadingDots
@@ -12,36 +12,40 @@ var transparentDotContainerStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-around',
-  width: '33.33%',
+  // width: This gets set during rendering
   height: '100%',
   flex: '0 0 auto'
 }
 
 var defaults = {
+  animation: defaultAnimationName + ' 1.8s ease-in-out infinite both',
+  borderRadius: 50,
   color: 'black',
-  borderRadius: 0
+  count: 3,
+  delay: 0.16
 }
 
 function RenderLoadingDots (h, opts) {
   opts = extend(defaults, opts)
 
   var animatedDotStyle = {
-    animation: animationName + ' 1.8s ease-in-out infinite both',
+    animation: opts.animation,
     borderRadius: opts.borderRadius + '%',
     backgroundColor: opts.color
   }
 
   var loadingDots = []
-  // Maybe allow the consumer to specify # divs?
-  for (var i = 0; i < 3; i++) {
-    var style = extend(transparentDotContainerStyle)
-    var centerStyle = extend(animatedDotStyle)
-    centerStyle.animationDelay = (-0.32 + (i * 0.16)) + 's'
-    loadingDots.push(h('div', {
-      style: style
-    }, [
+
+  for (var i = 0; i < opts.count; i++) {
+    var individualContainerStyle = extend(transparentDotContainerStyle)
+    individualContainerStyle.width = (100 / opts.count) + '%'
+
+    var individualDotStyle = extend(animatedDotStyle)
+    individualDotStyle.animationDelay = (-opts.delay * (opts.count - 1)) + (i * opts.delay) + 's'
+
+    loadingDots.push(h('div', { style: individualContainerStyle }, [
       h('div', {
-        style: centerStyle
+        style: individualDotStyle
       })
     ]))
   }
@@ -56,4 +60,3 @@ function RenderLoadingDots (h, opts) {
 
   return renderedLoadSpinner
 }
-
