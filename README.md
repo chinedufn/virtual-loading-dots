@@ -25,7 +25,7 @@ View the component in a browser using `npm run demo`
 
 ## API
 
-#### `LoadingDots(dotColor, widthEM, parentBackgroundColor, borderRadius)` -> `object`
+#### `LoadingDots(dotColor, borderRadius)` -> `object`
 
 ##### dotColor
 
@@ -34,26 +34,6 @@ View the component in a browser using `npm run demo`
 Type: `string`
 
 The color of your dots
-
-##### widthEM
-
-*Required*
-
-`Type`: number
-
-Width of your entire loading dots component in `em`
-
-##### parentBackgroundColor
-
-*Required*
-
-Type: `string`
-
-The background color of whatever element that you're putting this spinner inside of.
-This is currently required because the loading spinners are actually the color of your
-`backgroundColor`, and their shadows are the color of your `dotColor`
-
-Ideally the loading spinner would be transparent. Need to figure out a better animation
 
 ##### borderRadius
 
