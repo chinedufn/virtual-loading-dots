@@ -3,9 +3,6 @@
 var extend = require('xtend')
 var insertAnimation = require('./insert-animation.js')
 
-// Maybe allow consumer to specify this (px, vh, etc)
-var unitsString = 'em'
-
 module.exports = CreateLoadingDots
 
 function CreateLoadingDots (dotColor, borderRadius) {
