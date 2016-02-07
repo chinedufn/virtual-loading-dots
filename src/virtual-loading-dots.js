@@ -1,14 +1,9 @@
 var extend = require('xtend')
-var insertAnimation = require('./insert-animation.js')
 
-module.exports = CreateLoadingDots
+var animationName = require('./insert-animation.js')()
 
-function CreateLoadingDots () {
-  var animationName = insertAnimation()
-
-  return {
-    render: RenderLoadingDots.bind(null, animationName)
-  }
+module.exports = {
+  render: RenderLoadingDots
 }
 
 // Pull this out. Make a function that returns the style
@@ -22,7 +17,7 @@ var baseDotStyle = {
   flex: '0 0 auto'
 }
 
-function RenderLoadingDots (animationName, h, dotColor, borderRadius) {
+function RenderLoadingDots (h, dotColor, borderRadius) {
   var baseStyle = {
     animation: animationName + ' 1.8s ease-in-out infinite both',
     borderRadius: borderRadius,
