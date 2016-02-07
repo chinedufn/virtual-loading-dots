@@ -55,7 +55,6 @@ Returns an object that exposes a `.render` function
 
 ## TODO:
 
-- Defaults for dotColor and borderRadius
 - Allow dots to interpolate between two colors
 - Add a few different `loadingDots` to demo
 - Add documentation to stress importance of framework agnostic components

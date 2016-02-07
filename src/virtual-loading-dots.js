@@ -8,7 +8,7 @@ module.exports = {
 
 // Pull this out. Make a function that returns the style
 // Maybe make width depend on a passed in number of dots
-var baseDotStyle = {
+var transparentDotContainerStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-around',
@@ -17,17 +17,25 @@ var baseDotStyle = {
   flex: '0 0 auto'
 }
 
-function RenderLoadingDots (h, dotColor, borderRadius) {
-  var baseStyle = {
+var defaults = {
+  color: 'black',
+  borderRadius: 0
+}
+
+function RenderLoadingDots (h, opts) {
+  opts = extend(defaults, opts)
+
+  var animatedDotStyle = {
     animation: animationName + ' 1.8s ease-in-out infinite both',
-    borderRadius: borderRadius,
-    backgroundColor: dotColor
+    borderRadius: opts.borderRadius + '%',
+    backgroundColor: opts.color
   }
+
   var loadingDots = []
   // Maybe allow the consumer to specify # divs?
   for (var i = 0; i < 3; i++) {
-    var style = extend(baseDotStyle)
-    var centerStyle = extend(baseStyle)
+    var style = extend(transparentDotContainerStyle)
+    var centerStyle = extend(animatedDotStyle)
     centerStyle.animationDelay = (-0.32 + (i * 0.16)) + 's'
     loadingDots.push(h('div', {
       style: style
@@ -48,3 +56,4 @@ function RenderLoadingDots (h, dotColor, borderRadius) {
 
   return renderedLoadSpinner
 }
+

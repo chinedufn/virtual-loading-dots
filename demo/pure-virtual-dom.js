@@ -2,10 +2,7 @@ var h = require('virtual-dom/h')
 var createElement = require('virtual-dom/create-element')
 var CreateLoadSpinner = require('../')
 
-var dotColor = 'blue'
-var borderRadius = '0'
-
-var oldLoadSpinnerVtree = CreateLoadSpinner.render(h, dotColor, borderRadius)
+var oldLoadSpinnerVtree = CreateLoadSpinner.render(h, {color: 'blue', borderRadius: '0'})
 
 // Put your load spinner inside a parent div
 // It will size itself appropriately
