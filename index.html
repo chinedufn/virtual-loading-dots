@@ -13,10 +13,7 @@ var h = require('virtual-dom/h')
 var createElement = require('virtual-dom/create-element')
 var CreateLoadSpinner = require('../')
 
-var dotColor = 'blue'
-var borderRadius = '0'
-
-var oldLoadSpinnerVtree = CreateLoadSpinner.render(h, dotColor, borderRadius)
+var oldLoadSpinnerVtree = CreateLoadSpinner.render(h, {color: 'blue', borderRadius: '0'})
 
 // Put your load spinner inside a parent div
 // It will size itself appropriately
@@ -57,10 +54,7 @@ var React = require('react')
 var ReactDOM = require('react-dom')
 var CreateLoadSpinner = require('../')
 
-var dotColor = 'red'
-var borderRadius = '50%'
-
-var rootNode = CreateLoadSpinner.render(React.createElement, dotColor, borderRadius)
+var rootNode = CreateLoadSpinner.render(React.createElement, {color: 'red', borderRadius: 50})
 var divToMount = document.createElement('div')
 
 ReactDOM.render(React.createElement('div', {}, [
@@ -20126,7 +20120,7 @@ module.exports = {
 
 // Pull this out. Make a function that returns the style
 // Maybe make width depend on a passed in number of dots
-var baseDotStyle = {
+var transparentDotContainerStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-around',
@@ -20135,17 +20129,25 @@ var baseDotStyle = {
   flex: '0 0 auto'
 }
 
-function RenderLoadingDots (h, dotColor, borderRadius) {
-  var baseStyle = {
+var defaults = {
+  color: 'black',
+  borderRadius: 0
+}
+
+function RenderLoadingDots (h, opts) {
+  opts = extend(defaults, opts)
+
+  var animatedDotStyle = {
     animation: animationName + ' 1.8s ease-in-out infinite both',
-    borderRadius: borderRadius,
-    backgroundColor: dotColor
+    borderRadius: opts.borderRadius + '%',
+    backgroundColor: opts.color
   }
+
   var loadingDots = []
   // Maybe allow the consumer to specify # divs?
   for (var i = 0; i < 3; i++) {
-    var style = extend(baseDotStyle)
-    var centerStyle = extend(baseStyle)
+    var style = extend(transparentDotContainerStyle)
+    var centerStyle = extend(animatedDotStyle)
     centerStyle.animationDelay = (-0.32 + (i * 0.16)) + 's'
     loadingDots.push(h('div', {
       style: style
@@ -20166,6 +20168,7 @@ function RenderLoadingDots (h, dotColor, borderRadius) {
 
   return renderedLoadSpinner
 }
+
 
 },{"./insert-animation.js":191,"xtend":190}]},{},[1]);
 </script>
