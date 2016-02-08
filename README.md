@@ -64,9 +64,10 @@ LoadingDots.render(React.createElement)
 
 Type: `object`
 
-`virtual-loading-dots` comes with [default options]. Pass in the ones that you'd like to override
+`virtual-loading-dots` comes with [default options](src/default-options.js). Pass in the ones that you'd like to override
 
 ```js
+// Example overrides
 var myOptions = {
   animation: 'my-cool-animation 2.5s ease-in-out infinite both',
   borderRadius: '50',
