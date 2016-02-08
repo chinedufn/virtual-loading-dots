@@ -17,7 +17,7 @@ Component is currently usable, but the API is a work in progress and will change
 
 `virtual-loading-dots` works with [virtual-dom](https://github.com/Matt-Esch/virtual-dom),
 [react](https://npmjs.com/package/react), or any other DOM builder with a `hyperscript` style
-API: 
+API:
 
 `h(tagName, properties, children)`
 
@@ -64,11 +64,17 @@ LoadingDots.render(React.createElement)
 
 Type: `object`
 
-Pass in any of the following options that you would like to override
+`virtual-loading-dots` comes with [default options]. Pass in the ones that you'd like to override
 
 ```js
-var options = {color: 'red', borderRadius: '50'}
-LoadingDots.render(h, options)
+var myOptions = {
+  animation: 'my-cool-animation 2.5s ease-in-out infinite both',
+  borderRadius: '50',
+  color: '#ff0000',
+  count: '4',
+  delay: '0.3'
+}
+LoadingDots.render(h, myOptions)
 ```
 
 ##### animation
@@ -79,10 +85,6 @@ Default: use [default-animation](src/default-animation.js#L25) as a reference ex
 
 The animation for your dots
 
-```js
-LoadingDots.render(h, {animation: 'my-animation 1.8s ease-in-out infinite both'})
-```
-
 ##### borderRadius
 
 Type: `number` or `string`
@@ -90,10 +92,6 @@ Type: `number` or `string`
 Default: `50`
 
 `0` for squares, `50` for circles, anything in between for a hybrid shape
-
-```js
-LoadingDots.render(h, {borderRadius: '25'})
-```
 
 ##### color
 
@@ -103,10 +101,6 @@ Default: `'black'`
 
 The color of your dots in [css color notation](https://developer.mozilla.org/en-US/docs/Web/CSS/color)
 
-```js
-LoadingDots.render(h, {color: '#ff0000'})
-```
-
 ##### count
 
 Type: `number`
@@ -115,10 +109,6 @@ Default: `3`
 
 The number of dots
 
-```js
-LoadingDots.render(h, {count: '4'})
-```
-
 ##### delay
 
 Type: `number`
@@ -126,10 +116,6 @@ Type: `number`
 Default: `0.16`
 
 The [animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay) between each neighboring dot
-
-```js
-LoadingDots.render(h, {delay: 0.3})
-```
 
 ## TODO:
 
