@@ -49,7 +49,7 @@ var loop = Loop(function (dt) {
 loop.start()
 */
 
-},{"../":192,"virtual-dom/create-element":172,"virtual-dom/h":173}],3:[function(require,module,exports){
+},{"../":194,"virtual-dom/create-element":172,"virtual-dom/h":173}],3:[function(require,module,exports){
 var React = require('react')
 var ReactDOM = require('react-dom')
 var CreateLoadSpinner = require('../')
@@ -69,7 +69,7 @@ ReactDOM.render(React.createElement('div', {}, [
   ])
 ]), document.body.appendChild(divToMount))
 
-},{"../":192,"react":171,"react-dom":42}],4:[function(require,module,exports){
+},{"../":194,"react":171,"react-dom":42}],4:[function(require,module,exports){
 
 },{}],5:[function(require,module,exports){
 /*!
@@ -20073,6 +20073,19 @@ function extend() {
 }
 
 },{}],191:[function(require,module,exports){
+// The three containers that house our dots
+var DotContainerStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-around',
+  // width: This gets set during rendering
+  height: '100%',
+  flex: '0 0 auto'
+}
+
+module.exports = DotContainerStyle
+
+},{}],192:[function(require,module,exports){
 (function (process){
 var createKF = require('create-keyframe')
 var insertCSS = require('insert-css')
@@ -20103,32 +20116,26 @@ var animation = KFObj.name + ' 1.8s ease-in-out infinite both'
 module.exports = animation
 
 }).call(this,require('_process'))
-},{"_process":41,"create-keyframe":6,"insert-css":39}],192:[function(require,module,exports){
-var extend = require('xtend')
-
+},{"_process":41,"create-keyframe":6,"insert-css":39}],193:[function(require,module,exports){
 var defaultAnimation = require('./default-animation.js')
 
-module.exports = {
-  render: RenderLoadingDots
-}
-
-// Pull this out. Make a function that returns the style
-// Maybe make width depend on a passed in number of dots
-var transparentDotContainerStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-around',
-  // width: This gets set during rendering
-  height: '100%',
-  flex: '0 0 auto'
-}
-
-var defaults = {
+var defaultOptions = {
   animation: defaultAnimation,
   borderRadius: 50,
   color: 'black',
   count: 3,
   delay: 0.16
+}
+
+module.exports = defaultOptions
+
+},{"./default-animation.js":192}],194:[function(require,module,exports){
+var extend = require('xtend')
+var defaults = require('./default-options.js')
+var dotContainerStyle = require('./container_style.js')
+
+module.exports = {
+  render: RenderLoadingDots
 }
 
 function RenderLoadingDots (h, opts) {
@@ -20143,7 +20150,7 @@ function RenderLoadingDots (h, opts) {
   var loadingDots = []
 
   for (var i = 0; i < opts.count; i++) {
-    var individualContainerStyle = extend(transparentDotContainerStyle)
+    var individualContainerStyle = extend(dotContainerStyle)
     individualContainerStyle.width = (100 / opts.count) + '%'
 
     var individualDotStyle = extend(animatedDotStyle)
@@ -20157,17 +20164,14 @@ function RenderLoadingDots (h, opts) {
   }
 
   var renderedLoadSpinner = h('div', {
-    style: {
-      display: 'flex',
-      height: '100%',
-      width: '100%'
-    }
+    // Our div that holds the three dots. It expands to fill its parent
+    style: { display: 'flex', height: '100%', width: '100%' }
   }, loadingDots)
 
   return renderedLoadSpinner
 }
 
-},{"./default-animation.js":191,"xtend":190}]},{},[1]);
+},{"./container_style.js":191,"./default-options.js":193,"xtend":190}]},{},[1]);
 </script>
   </body>
 </html>
