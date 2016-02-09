@@ -1,5 +1,5 @@
 var createKF = require('create-keyframe')
-var insertCSS = require('insert-css')
+var insertCSS = require('insert-styles')
 
 var KFObj = createKF({
   0: {
@@ -20,7 +20,7 @@ var KFObj = createKF({
   }
 })
 
-if (process.browser) insertCSS(KFObj.css)
+insertCSS(KFObj.css)
 
 var animation = KFObj.name + ' 1.8s ease-in-out infinite both'
 
