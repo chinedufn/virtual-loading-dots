@@ -71,9 +71,9 @@ document.body.appendChild(customerAnimationExample)
 },{"../":195,"_process":42,"create-keyframe":7,"insert-css":40,"virtual-dom/create-element":173,"virtual-dom/h":174}],3:[function(require,module,exports){
 var h = require('virtual-dom/h')
 var createElement = require('virtual-dom/create-element')
-var CreateLoadSpinner = require('../')
+var LoadSpinner = require('../')
 
-var oldLoadSpinnerVtree = CreateLoadSpinner.render(h, {color: 'blue', borderRadius: '0'})
+var oldLoadSpinnerVtree = LoadSpinner.render(h, {color: 'blue', borderRadius: '0'})
 
 // Put your load spinner inside a parent div
 // It will size itself appropriately
@@ -95,15 +95,13 @@ var standaloneExample = createElement(h('div', [
 document.body.appendChild(standaloneExample)
 
 /*
-// We don't actually need a raf loop here since our component
-// since it doesn't accept parameters right now
-// So this is just for demonstration / future updates
+// If you wanted a raf loop
 //
 // var diff = require('virtual-dom/diff')
 // var patch = require('virtual-dom/patch')
 // var Loop = require('raf-loop')
 var loop = Loop(function (dt) {
-  var newLoadSpinnerVtree = loadSpinner.render(h)
+  var newLoadSpinnerVtree = LoadSpinner.render(h)
   loadSpinnerElement = patch(loadSpinnerElement, diff(oldLoadSpinnerVtree, newLoadSpinnerVtree))
   oldLoadSpinnerVtree = newLoadSpinnerVtree
 })
@@ -113,9 +111,9 @@ loop.start()
 },{"../":195,"virtual-dom/create-element":173,"virtual-dom/h":174}],4:[function(require,module,exports){
 var React = require('react')
 var ReactDOM = require('react-dom')
-var CreateLoadSpinner = require('../')
+var LoadingDots = require('../')
 
-var rootNode = CreateLoadSpinner.render(React.createElement, {color: 'red', borderRadius: 50, count: 4, delay: '1.0'})
+var rootNode = LoadingDots.render(React.createElement, {color: 'red', borderRadius: 50, count: 4, delay: '1.0'})
 var divToMount = document.createElement('div')
 
 ReactDOM.render(React.createElement('div', {}, [
