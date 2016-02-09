@@ -8,8 +8,9 @@ var oldLoadSpinnerVtree = CreateLoadSpinner.render(h, {color: 'blue', borderRadi
 // It will size itself appropriately
 var loadSpinnerInsideParentDiv = h('div#parentContainer', {
   style: {
-    height: '6em',
-    width: '18em'
+    height: '3em',
+    width: '9em',
+    marginBottom: '3em'
   }
 }, [
   oldLoadSpinnerVtree
