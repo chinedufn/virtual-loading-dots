@@ -34,6 +34,7 @@
   "dependencies": {
     "create-keyframe": "^1.0.1",
     "insert-css": "^0.2.0",
+    "map-times": "~1.0.0",
     "xtend": "^4.0.1"
   },
   "devDependencies": {
