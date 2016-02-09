@@ -125,6 +125,7 @@ The [animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation
 - Add documentation to highlight the importance of framework agnostic components
 - Research React and update the React example if necessary
 - Maybe add .jsx and hyperx examples
+- Add a script tag example
 - Think about exposing an api to extend the properties of Loading Dots' internal Vnodes
 
 ## See Also
