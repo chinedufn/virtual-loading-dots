@@ -17,18 +17,10 @@ Examples:
 $ npm install --save virtual-loading-dots
 ```
 
-Component is currently usable, but the API is a work in progress and will change
-
 ## Usage
 
 `virtual-loading-dots` works with [virtual-dom](https://github.com/Matt-Esch/virtual-dom),
-[react](https://npmjs.com/package/react), or any other DOM builder with a `hyperscript` style
-API:
-
-`h(tagName, properties, children)`
-
----
-
+[react](https://npmjs.com/package/react), or any other DOM builder with a [hyperscript](https://github.com/Raynos/virtual-hyperscript#hselector-properties-children) style api
 
 ```js
 var h = require('virtual-dom/h')
@@ -36,8 +28,10 @@ var LoadingDots = require('virtual-loading-dots')
 LoadingDots.render(h) // returns vtree
 ```
 
+
 ```sh
 # view the demo in a local browser by pasting this into your terminal:
+# changes to the `demo` directory will live reload in your browser
 git clone https://github.com/chinedufn/virtual-loading-dots && cd virtual-loading-dots && npm install && npm run demo
 ```
 
