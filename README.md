@@ -1,9 +1,15 @@
 virtual-loading-dots [![npm version](https://badge.fury.io/js/virtual-loading-dots.svg)](http://badge.fury.io/js/virtual-loading-dots) [![Build Status](https://travis-ci.org/chinedufn/virtual-loading-dots.svg?branch=master)](https://travis-ci.org/chinedufn/virtual-loading-dots)
 ===============
 
-> virtual-dom loading dots component
+> A stateless loading dots component. Takes on its parent element's width and height
 
 [View live demo](http://chinedufn.github.io/virtual-loading-dots)
+
+Examples:
+
+- [virtual-dom](demo/pure-virtual-dom.js)
+- [react](demo/react.js)
+- [custom animation](demo/custom-animation.js)
 
 ## To Install
 
@@ -23,10 +29,11 @@ API:
 
 ---
 
-For now use the [demo](/demo) folder for example usage
 
 ```js
-// TODO: Example usage
+var h = require('virtual-dom/h')
+var LoadingDots = require('virtual-loading-dots')
+LoadingDots.render(h) // returns vtree
 ```
 
 ```sh
@@ -120,11 +127,11 @@ The [animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation
 
 ## TODO:
 
-- Add animation override example
 - Add a few different `loadingDots` usage examples
-- Add documentation to stress importance of framework agnostic components
-- Research React and update the  React example
+- Add documentation to highlight the importance of framework agnostic components
+- Research React and update the React example if necessary
 - Maybe add .jsx and hyperx examples
+- Think about exposing an api to extend the properties of Loading Dots' internal Vnodes
 
 ## See Also
 
