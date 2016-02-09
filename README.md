@@ -1,7 +1,7 @@
 virtual-loading-dots [![npm version](https://badge.fury.io/js/virtual-loading-dots.svg)](http://badge.fury.io/js/virtual-loading-dots) [![Build Status](https://travis-ci.org/chinedufn/virtual-loading-dots.svg?branch=master)](https://travis-ci.org/chinedufn/virtual-loading-dots)
 ===============
 
-> A stateless loading dots component. Takes on its parent element's width and height
+> A stateless loading dots component. Takes on its parent element's width and height. Uses [css @keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes) for animations
 
 [View live demo](http://chinedufn.github.io/virtual-loading-dots)
 
