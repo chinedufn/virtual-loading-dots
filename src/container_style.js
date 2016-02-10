@@ -1,11 +1,11 @@
 // The three containers that house our dots
 var DotContainerStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-around',
   // width: This gets set during rendering
+  alignItems: 'center',
+  display: 'flex',
+  flex: '0 0 auto',
   height: '100%',
-  flex: '0 0 auto'
+  justifyContent: 'space-around'
 }
 
 module.exports = DotContainerStyle

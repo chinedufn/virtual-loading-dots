@@ -74,6 +74,7 @@ var myOptions = {
   borderRadius: '50',
   color: '#ff0000',
   count: '4',
+  direction: 'column',
   delay: '0.3'
 }
 LoadingDots.render(h, myOptions)
@@ -110,6 +111,14 @@ Type: `number`
 Default: `3`
 
 The number of dots
+
+##### direction
+
+Type: `string`
+
+Default: `row`
+
+`'row'` or `'column'`. Whether your dots are horizontal or vertical
 
 ##### delay
 

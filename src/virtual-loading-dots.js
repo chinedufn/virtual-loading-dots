@@ -18,12 +18,13 @@ function RenderLoadingDots (h, opts) {
 
   return h('div', {
     // Our div that holds the three dots. It expands to fill its parent
-    style: {display: 'flex', height: '100%', width: '100%'}
+    style: {display: 'flex', height: '100%', flexDirection: opts.direction, width: '100%'}
   }, times(opts.count, renderDot))
 
   function renderDot (index) {
     var individualContainerStyle = extend(dotContainerStyle, {
-      width: (100 / opts.count) + '%'
+      height: opts.direction === 'column' ? (100 / opts.count) + '%' : '100%',
+      width: opts.direction === 'row' ? (100 / opts.count) + '%' : '100%'
     })
 
     var individualDotStyle = extend(animatedDotStyle, {
