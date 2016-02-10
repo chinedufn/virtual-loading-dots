@@ -1,4 +1,5 @@
 var extend = require('xtend')
+var times = require('map-times')
 var defaults = require('./default-options.js')
 var dotContainerStyle = require('./container_style.js')
 
@@ -15,26 +16,22 @@ function RenderLoadingDots (h, opts) {
     backgroundColor: opts.color
   }
 
-  var loadingDots = []
-
-  for (var i = 0; i < opts.count; i++) {
-    var individualContainerStyle = extend(dotContainerStyle)
-    individualContainerStyle.width = (100 / opts.count) + '%'
-
-    var individualDotStyle = extend(animatedDotStyle)
-    individualDotStyle.animationDelay = (-opts.delay * (opts.count - 1)) + (i * opts.delay) + 's'
-
-    loadingDots.push(h('div', { style: individualContainerStyle }, [
-      h('div', {
-        style: individualDotStyle
-      })
-    ]))
-  }
-
-  var renderedLoadSpinner = h('div', {
+  return h('div', {
     // Our div that holds the three dots. It expands to fill its parent
-    style: { display: 'flex', height: '100%', width: '100%' }
-  }, loadingDots)
+    style: {display: 'flex', height: '100%', width: '100%'}
+  }, times(opts.count, renderDot))
 
-  return renderedLoadSpinner
+  function renderDot (index) {
+    var individualContainerStyle = extend(dotContainerStyle, {
+      width: (100 / opts.count) + '%'
+    })
+
+    var individualDotStyle = extend(animatedDotStyle, {
+      animationDelay: (-opts.delay * (opts.count - 1)) + (index * opts.delay) + 's'
+    })
+
+    return h('div', {style: individualContainerStyle}, [
+      h('div', {style: individualDotStyle})
+    ])
+  }
 }
