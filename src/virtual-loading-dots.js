@@ -1,3 +1,4 @@
+var prefix = require('preflex')
 var extend = require('xtend')
 var times = require('map-times')
 var defaults = require('./default-options.js')
@@ -18,7 +19,7 @@ function RenderLoadingDots (h, opts) {
 
   return h('div', {
     // Our div that holds the three dots. It expands to fill its parent
-    style: {display: 'flex', height: '100%', flexDirection: opts.direction, width: '100%'}
+    style: prefix({display: 'flex', height: '100%', flexDirection: opts.direction, width: '100%'})
   }, times(opts.count, renderDot))
 
   function renderDot (index) {
