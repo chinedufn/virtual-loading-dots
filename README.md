@@ -17,6 +17,15 @@ Examples:
 $ npm install --save virtual-loading-dots
 ```
 
+## Demo
+
+You can also run the [live demo](http://chinedufn.github.io/virtual-loading-dots) locally:
+
+```sh
+# Your changes to the `/demo` folder will now live reload in your browser
+git clone https://github.com/chinedufn/virtual-loading-dots && cd virtual-loading-dots && npm install && npm run demo
+```
+
 ## Usage
 
 `virtual-loading-dots` works with [virtual-dom](https://github.com/Matt-Esch/virtual-dom),
